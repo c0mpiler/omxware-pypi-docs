@@ -2,14 +2,6 @@
 OMXware
 =======
 
-.. image:: https://travis.ibm.com/GrandChallenge-Almaden/omxware-pypi.svg?token=zra2vLszsZmyB2CQTsas&branch=master
-    :target: https://travis.ibm.com/GrandChallenge-Almaden/omxware-pypi
-
-
-.. image:: https://badge.fury.io/py/omxware.svg
-    :target: https://badge.fury.io/py/omxware
-    :alt: Latest Version
-
 |
 
 **Web Services**
