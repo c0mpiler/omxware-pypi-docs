@@ -1,0 +1,1074 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>omxware package &#8212; omxware 0.1.27 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="omxware.entities package" href="omxware.entities.html" />
+    <link rel="prev" title="omxware" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="omxware-package">
+<h1>omxware package<a class="headerlink" href="#omxware-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="omxware.entities.html">omxware.entities package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.Domain">omxware.entities.Domain module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.Entity">omxware.entities.Entity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.Gene">omxware.entities.Gene module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.Genome">omxware.entities.Genome module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.Genus">omxware.entities.Genus module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.GoTerm">omxware.entities.GoTerm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.IprCode">omxware.entities.IprCode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.Protein">omxware.entities.Protein module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities.User">omxware.entities.User module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="omxware.entities.html#module-omxware.entities">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-omxware.OmxResponse">
+<span id="omxware-omxresponse-module"></span><h2>omxware.OmxResponse module<a class="headerlink" href="#module-omxware.OmxResponse" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="omxware.OmxResponse.OmxResponse">
+<em class="property">class </em><code class="descclassname">omxware.OmxResponse.</code><code class="descname">OmxResponse</code><span class="sig-paren">(</span><em>connecthdr</em>, <em>omx_response: requests.models.Response</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.error">
+<code class="descname">error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>OMXWare Query errors / exceptions</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">str:    Error messages</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.facets">
+<code class="descname">facets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.facets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.facets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.message">
+<code class="descname">message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>OMXWare response comment</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">str:    Message</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.page_index">
+<code class="descname">page_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.page_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.page_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Response page number</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">str:    Response page number</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.page_size">
+<code class="descname">page_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.page_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.page_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Response page size</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">str:    Response page size</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.response_time">
+<code class="descname">response_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.response_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.response_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Response time for the query</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">str:    Response time</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.results">
+<code class="descname">results</code><span class="sig-paren">(</span><em>type='list'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the results for in the chosen output format</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>type (str): one of {‘list’, ‘json’, ‘df’, ‘fasta’}</dd>
+<dt>Returns:</dt>
+<dd>‘list’      =&gt; OMXWare query results as list
+‘json’      =&gt; List of OMXWare query results as a json array
+‘df’        =&gt; List of OMXWare query results as a Pandas data-frame
+‘fasta’     =&gt; (Only for Genes and/or Proteins) Get results as Fasta</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.show_facets">
+<code class="descname">show_facets</code><span class="sig-paren">(</span><em>name='type'</em>, <em>topN=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.show_facets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.show_facets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.total_results">
+<code class="descname">total_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.total_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.total_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of results for the query</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">int:    Total number of results</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.OmxResponse.OmxResponse.type">
+<code class="descname">type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Response type</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">str:    Response type</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-omxware.omxware">
+<span id="omxware-omxware-module"></span><h2>omxware.omxware module<a class="headerlink" href="#module-omxware.omxware" title="Permalink to this headline">¶</a></h2>
+<p>OMXWare SDK</p>
+<dl class="function">
+<dt id="omxware.omxware.get_token">
+<code class="descclassname">omxware.omxware.</code><code class="descname">get_token</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#get_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify the credentials and get a User Token</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param username:</th><td class="field-body">OMXWare username. This is different from your IBM Id username</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type username:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param password:</th><td class="field-body">OMXWare password. This is different from your IBM Id’s password</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type password:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd>OMXWare user token</dd>
+<dt>Raises:</dt>
+<dd>KeyError: Raises an exception.</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="omxware.omxware.omxware">
+<em class="property">class </em><code class="descclassname">omxware.omxware.</code><code class="descname">omxware</code><span class="sig-paren">(</span><em>omxware_token</em>, <em>env='public'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="omxware.omxware.omxware.PAGE_INDEX_DEFAULT">
+<code class="descname">PAGE_INDEX_DEFAULT</code><em class="property"> = 1</em><a class="headerlink" href="#omxware.omxware.omxware.PAGE_INDEX_DEFAULT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="omxware.omxware.omxware.PAGE_SIZE_DEFAULT">
+<code class="descname">PAGE_SIZE_DEFAULT</code><em class="property"> = 25</em><a class="headerlink" href="#omxware.omxware.omxware.PAGE_SIZE_DEFAULT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxware.omxware.domains">
+<code class="descname">domains</code><span class="sig-paren">(</span><em>ids=None</em>, <em>sequence=None</em>, <em>genus_names=None</em>, <em>protein_ids=None</em>, <em>go_terms=None</em>, <em>ipr_ids=None</em>, <em>sequence_length=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware.domains"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware.domains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare Domains.</p>
+<p>Parameters:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of domain ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param sequence:</th><td class="field-body">Domain sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type sequence:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genus names</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param protein_ids:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Protein ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type protein_ids:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param go_terms:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type go_terms:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param ipr_ids:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ipr_ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param sequence_length:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type sequence_length:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Domain</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxware.omxware.genes">
+<code class="descname">genes</code><span class="sig-paren">(</span><em>ids=None</em>, <em>sequence=None</em>, <em>gene_name=None</em>, <em>genome_ids=None</em>, <em>genus_names=None</em>, <em>go_terms=None</em>, <em>ipr_ids=None</em>, <em>sequence_length=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware.genes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware.genes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare Genes.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of gene ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param sequence:</th><td class="field-body">Gene sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type sequence:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param gene_name:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type gene_name:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genome_ids:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genome IDs</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genome_ids:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genus names</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param go_terms:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type go_terms:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param ipr_ids:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ipr_ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param sequence_length:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type sequence_length:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Gene</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxware.omxware.genomes">
+<code class="descname">genomes</code><span class="sig-paren">(</span><em>ids=None</em>, <em>genus_names=None</em>, <em>genome_type=None</em>, <em>genome_taxid=None</em>, <em>created_before=None</em>, <em>created_after=None</em>, <em>modified_before=None</em>, <em>modified_after=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware.genomes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware.genomes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare Genomes by List of Genome ID(s) and/or Genus name(s) .</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of Genome IDs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genus names</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genome Types. Must be one of { ‘REFSEQ’, ‘SRA’, ‘GENBANK’ }</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genome Tax ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param created_before:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Created / Imported before. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type created_before:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param created_after:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Created / Imported after. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type created_after:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param modified_before:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Modified before. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type modified_before:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param modified_after:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Modified after. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type modified_after:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Genome</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxware.omxware.genus">
+<code class="descname">genus</code><span class="sig-paren">(</span><em>genus_names=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware.genus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware.genus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare Genera by names .</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genus names</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Genus</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxware.omxware.go">
+<code class="descname">go</code><span class="sig-paren">(</span><em>ids=None</em>, <em>categories=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware.go"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware.go" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare GO Terms by List of GO ID(s) and/or Category name(s) .</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of GO Term IDs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param categories:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of GO Term Categories. Must be one of { ‘MOLECULAR_FUNCTION’, ‘BIOLOGICAL_PROCESS’, ‘CELLULAR_COMPONENT’ }</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type categories:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Go</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxware.omxware.ipr">
+<code class="descname">ipr</code><span class="sig-paren">(</span><em>ids=None</em>, <em>categories=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware.ipr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware.ipr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare IPRs by List of IPR Code(s) and/or Category name(s) .</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of IPR IDs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param categories:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of IPR Categories.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type categories:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Ipr</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxware.omxware.proteins">
+<code class="descname">proteins</code><span class="sig-paren">(</span><em>ids=None</em>, <em>sequence=None</em>, <em>protein_name=None</em>, <em>genome_ids=None</em>, <em>genus_names=None</em>, <em>domain_ids=None</em>, <em>go_terms=None</em>, <em>ipr_ids=None</em>, <em>sequence_length=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxware.html#omxware.proteins"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxware.omxware.proteins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare Proteins.</p>
+<p>Parameters:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of Protein ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param sequence:</th><td class="field-body">Protein sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type sequence:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param protein_name:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type protein_name:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genome_ids:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genome IDs</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genome_ids:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genus names</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param domain_ids:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type domain_ids:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param go_terms:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type go_terms:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param ipr_ids:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ipr_ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param sequence_length:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type sequence_length:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Protein</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-omxware.omxwaredev">
+<span id="omxware-omxwaredev-module"></span><h2>omxware.omxwaredev module<a class="headerlink" href="#module-omxware.omxwaredev" title="Permalink to this headline">¶</a></h2>
+<p>OMXWare SDK</p>
+<dl class="class">
+<dt id="omxware.omxwaredev.OmxwareDev">
+<em class="property">class </em><code class="descclassname">omxware.omxwaredev.</code><code class="descname">OmxwareDev</code><span class="sig-paren">(</span><em>omxware_token</em>, <em>env='public'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxwaredev.html#OmxwareDev"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxwaredev.OmxwareDev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#omxware.omxware.omxware" title="omxware.omxware.omxware"><code class="xref py py-class docutils literal notranslate"><span class="pre">omxware.omxware.omxware</span></code></a></p>
+<dl class="attribute">
+<dt id="omxware.omxwaredev.OmxwareDev.PAGE_INDEX_DEFAULT">
+<code class="descname">PAGE_INDEX_DEFAULT</code><em class="property"> = 1</em><a class="headerlink" href="#omxware.omxwaredev.OmxwareDev.PAGE_INDEX_DEFAULT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="omxware.omxwaredev.OmxwareDev.PAGE_SIZE_DEFAULT">
+<code class="descname">PAGE_SIZE_DEFAULT</code><em class="property"> = 25</em><a class="headerlink" href="#omxware.omxwaredev.OmxwareDev.PAGE_SIZE_DEFAULT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxwaredev.OmxwareDev.events">
+<code class="descname">events</code><span class="sig-paren">(</span><em>type=None</em>, <em>lastNdays=30</em>, <em>page_size=50000</em>, <em>page_nummber=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxwaredev.html#OmxwareDev.events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxwaredev.OmxwareDev.events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare User Events</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param:</th><td class="field-body">type:   str:    Must be one of { ‘login’, ‘register’ }</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param:</th><td class="field-body">lastNdays:  int:    last N days to query the events</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse :   User</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxwaredev.OmxwareDev.genes">
+<code class="descname">genes</code><span class="sig-paren">(</span><em>ids=None</em>, <em>sequence=None</em>, <em>gene_name=None</em>, <em>genome_ids=None</em>, <em>genus_names=None</em>, <em>go_terms=None</em>, <em>ipr_ids=None</em>, <em>resistant_only=False</em>, <em>sequence_length=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxwaredev.html#OmxwareDev.genes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxwaredev.OmxwareDev.genes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare Genes.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of gene ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param sequence:</th><td class="field-body">Gene sequence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type sequence:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param gene_name:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type gene_name:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genome_ids:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genome IDs</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genome_ids:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genus names</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param go_terms:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type go_terms:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param ipr_ids:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ipr_ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param sequence_length:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type sequence_length:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">(int): Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Gene</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxwaredev.OmxwareDev.genomes">
+<code class="descname">genomes</code><span class="sig-paren">(</span><em>ids=None</em>, <em>genus_names=None</em>, <em>genome_type=None</em>, <em>genome_taxid=None</em>, <em>resistant_only=False</em>, <em>created_before=None</em>, <em>created_after=None</em>, <em>modified_before=None</em>, <em>modified_after=None</em>, <em>page_size=25</em>, <em>page_number=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxwaredev.html#OmxwareDev.genomes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxwaredev.OmxwareDev.genomes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare Genomes by List of Genome ID(s) and/or Genus name(s) .</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ids:</th><td class="field-body">List of Genome IDs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type ids:</th><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genus names</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genome Types. Must be one of { ‘REFSEQ’, ‘SRA’, ‘GENBANK’ }</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param genus_names:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">List of Genome Tax ids</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type genus_names:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param created_before:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Created / Imported before. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type created_before:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param created_after:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Created / Imported after. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type created_after:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param modified_before:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Modified before. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type modified_before:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param modified_after:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Date - Modified after. Must be in YYYY-MM-DD format. Can also be YYYY-MM or Just YYYY</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type modified_after:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">[str]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_number:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Page Number</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">type page_number:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param page_size:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Results page size</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type page_size:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse: Genome</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="omxware.omxwaredev.OmxwareDev.whoami">
+<code class="descname">whoami</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxwaredev.html#OmxwareDev.whoami"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxwaredev.OmxwareDev.whoami" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get OMXWare User info .</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">OmxResponse :   User</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="omxware.omxwaredev.get_token">
+<code class="descclassname">omxware.omxwaredev.</code><code class="descname">get_token</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/omxwaredev.html#get_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.omxwaredev.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify the credentials and get a User Token</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param username:</th><td class="field-body">OMXWare username. This is different from your IBM Id username</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type username:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param password:</th><td class="field-body">OMXWare password. This is different from your IBM Id’s password</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type password:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Returns:</dt>
+<dd>OMXWare user token</dd>
+<dt>Raises:</dt>
+<dd>KeyError: Raises an exception.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-omxware">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-omxware" title="Permalink to this headline">¶</a></h2>
+<p>Top-level package for omxware.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">omxware</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">OMXware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">omxware</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">omxware package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-omxware.OmxResponse">omxware.OmxResponse module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-omxware.omxware">omxware.omxware module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-omxware.omxwaredev">omxware.omxwaredev module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-omxware">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">omxware</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">omxware</a></li>
+      <li>Next: <a href="omxware.entities.html" title="next chapter">omxware.entities package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, OMXWare Dev.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/omxware.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

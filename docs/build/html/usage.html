@@ -1,0 +1,305 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Getting Started &#8212; omxware 0.1.27 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="omxware" href="modules.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="import-omxware-and-initialize-session">
+<h2>Import <code class="docutils literal notranslate"><span class="pre">omxware</span></code> and initialize session<a class="headerlink" href="#import-omxware-and-initialize-session" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">omxware</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="n">omxware</span><span class="o">.</span><span class="n">get_token</span><span class="p">(</span><span class="s1">&#39;omxware_username&#39;</span><span class="p">,</span> <span class="s1">&#39;omxware_pwd&#39;</span><span class="p">)</span>
+<span class="n">omx</span> <span class="o">=</span> <span class="n">omxware</span><span class="o">.</span><span class="n">omxware</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieve-genes-as-a-pandas-dataframe">
+<h2>Retrieve genes as a Pandas Dataframe<a class="headerlink" href="#retrieve-genes-as-a-pandas-dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_string</span> <span class="o">=</span> <span class="s1">&#39;sporulation&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">omx</span><span class="o">.</span><span class="n">genes</span><span class="p">(</span><span class="n">gene_name</span><span class="o">=</span><span class="n">search_string</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1">#total_results = response.total_results()</span>
+<span class="c1">#print(total_results)</span>
+
+<span class="n">results_df</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;df&#39;</span><span class="p">)</span>
+<span class="n">results_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe table {
+      border-collapse: collapse;
+    }
+
+    .dataframe th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .dataframe tr:hover {background-color:#f5f5f5;}
+</style>
+<table border="0.1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Genera</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Sequence_length</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>clostridioides</td>
+      <td>e642254a70da3b1860b03d0755714862</td>
+      <td>Sporulation kinase A</td>
+      <td>1995</td>
+      <td>gene</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>paenibacillus</td>
+      <td>c22bd7d7ec6d836bfe7ca70caf9c0d56</td>
+      <td>Sporulation kinase E</td>
+      <td>1734</td>
+      <td>gene</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>bacillus</td>
+      <td>f5f7acff522419f65d867eef0d19376c</td>
+      <td>Sporulation kinase E</td>
+      <td>1788</td>
+      <td>gene</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bacillus</td>
+      <td>48d934478603605b8d8540139585f460</td>
+      <td>Sporulation protein YdcC</td>
+      <td>1005</td>
+      <td>gene</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>tindallia</td>
+      <td>e9b4c151f00d03795645b289bb68e9a7</td>
+      <td>Sporulation kinase A</td>
+      <td>2109</td>
+      <td>gene</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<div class="section" id="distribution-of-genes-by-genera">
+<h2>Distribution of Genes by Genera<a class="headerlink" href="#distribution-of-genes-by-genera" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">show_facets</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;genera&#39;</span><span class="p">,</span> <span class="n">topN</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/output_5_0.png" src="_images/output_5_0.png" />
+</div>
+<div class="section" id="retrieve-a-gene-object-as-json">
+<h2>Retrieve a Gene object as JSON<a class="headerlink" href="#retrieve-a-gene-object-as-json" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">results_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results_json</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;genera&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;clostridioides&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e642254a70da3b1860b03d0755714862&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sporulation kinase A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sequence_length&quot;</span><span class="p">:</span> <span class="mi">1995</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;gene&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;genera&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;paenibacillus&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c22bd7d7ec6d836bfe7ca70caf9c0d56&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sporulation kinase E&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sequence_length&quot;</span><span class="p">:</span> <span class="mi">1734</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;gene&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;genera&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;bacillus&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f5f7acff522419f65d867eef0d19376c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sporulation kinase E&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sequence_length&quot;</span><span class="p">:</span> <span class="mi">1788</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;gene&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieve-gene-data-as-an-object">
+<h2>Retrieve Gene data as an Object<a class="headerlink" href="#retrieve-gene-data-as-an-object" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results_list</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;list&#39;</span><span class="p">)</span>
+
+<span class="c1"># By default, the API returns a `list`</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Returns: List of {} objects </span><span class="se">\n</span><span class="s2">Results: {}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">type</span><span class="p">(),</span> <span class="n">response</span><span class="o">.</span><span class="n">total_results</span><span class="p">())</span> <span class="p">)</span>
+
+<span class="n">gene</span> <span class="o">=</span> <span class="n">results_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Id  </span><span class="se">\t\t</span><span class="s2">=&gt; &quot;</span> <span class="o">+</span> <span class="n">gene</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Name   </span><span class="se">\t\t</span><span class="s2">=&gt; &quot;</span> <span class="o">+</span> <span class="n">gene</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sequence   </span><span class="se">\t</span><span class="s2">=&gt; &quot;</span> <span class="o">+</span> <span class="n">gene</span><span class="o">.</span><span class="n">sequence</span><span class="p">()[:</span><span class="mi">100</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sequence length =&gt; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gene</span><span class="o">.</span><span class="n">sequence_length</span><span class="p">()))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> JSON:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">gene</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span><span class="p">:</span> <span class="n">List</span> <span class="n">of</span> <span class="n">gene</span> <span class="n">objects</span>
+<span class="n">Results</span><span class="p">:</span> <span class="mi">73318</span>
+
+<span class="n">Id</span>                  <span class="o">=&gt;</span> <span class="n">e642254a70da3b1860b03d0755714862</span>
+<span class="n">Name</span>                <span class="o">=&gt;</span> <span class="n">Sporulation</span> <span class="n">kinase</span> <span class="n">A</span>
+<span class="n">Sequence</span>    <span class="o">=&gt;</span> <span class="n">GTGAATAAAAAAAAGATTGTTATTATAGGGATTATTTATTCATTTTTAGTAGTATTTTCACTTACAAATATGTATGTAAATATGGAGTATAATCTAAATG</span><span class="o">...</span>
+<span class="n">Sequence</span> <span class="n">length</span> <span class="o">=&gt;</span> <span class="mi">1995</span>
+
+
+ <span class="n">JSON</span><span class="p">:</span>
+<span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;e642254a70da3b1860b03d0755714862&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sporulation kinase A&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="s1">&#39;genera&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;clostridioides&#39;</span><span class="p">],</span> <span class="s1">&#39;sequence_length&#39;</span><span class="p">:</span> <span class="mi">1995</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieve-a-gene-in-fasta-format">
+<h2>Retrieve a Gene in FASTA format<a class="headerlink" href="#retrieve-a-gene-in-fasta-format" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_gene_object</span> <span class="o">=</span> <span class="n">omx</span><span class="o">.</span><span class="n">genes</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="s1">&#39;00054a98f8ddd95e3f46d9d757137284&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_gene_object</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">OMX_gene_00054a98f8ddd95e3f46d9d757137284</span><span class="o">|</span><span class="n">Sporulation</span> <span class="n">initiation</span> <span class="n">phosphotransferase</span> <span class="n">F</span>
+<span class="n">ATGAACGAGAAGGTGCTGCTGGTTGACGACGACGAGGCCATCCGCGAAGTCCTCAGCCTCTCCATCGCCGACCTGGGCTACGACGTGGAAACCGCCCCCGGCGGCCGCGAAGCCCTGGAGCTGTGCGCCACCTTCAAACCGTCCATCGTGCTCACCGACATCAAGATGCCCGGCATGGACGGCATCGAACTGCTCTCGCGCGTCAAAGCCCTCGATCCCGAGATCGAGGTCATCATGATTTCCGGCCATGGCGACATGGAACTGGCCATCGAGAGCCTCAAGCGCCAGGCCCTGGATTTCCTCACCAAGCCCGTGCGCGACGAACTGCTCACAGCCTCCCTCCACCGGGCCGCCGACCGCGTGTCCATGCGCCGCCAGATCACCGAACACACCCGCAATCTCGAACGGCTGGTGCGCGAAAAATCCGCCCGCCTGGTCGAGATGGAGCGCCGCATGGCCGTGGGGCAGGCCGTGGAGGGCGTGGCCAGCGCCATCGAGGGGCTCATTGCCTCCTTCGACCAGGGACCCAGCTATTTCAACCAGATGCCCTGCTGCATCGTCATCCACAACCGCTACCTCGAAATCGTGGCCGTAAACACCCTGGGCCGGCAGCGCCTGGGCGAGGTGGTGGGCAAGATGAGCTGGGAACTCTACGCCGACCGTCAGGGCAGCGGCAACGCCTGCCCGGTCTGGCGCACCGTGGAACAAGGCCAGGGCCAGCGCGGCCGCGAGACCTTCCGCGACAAGGACGGCCGCGAGATTCCGGTGCTGATCCATACCGCCCCGGTCTTCGGCACGGACGGCCAGGTGGAGCTGGTCATCGAGATCGCCGCCGACGTGGCCGAGGTGGGCCGGCTCCAGGAAGAGCTGCGGGCCGTGCGCGAGAAATTCCAGCGCCTGTTCGACGCCGTGCCCTGCGCCATCGCCGTGCTGGACCAGGACTTCACCGTGGTCGAAGCCAACCGCCAATGGCGCGCCGACTTCGGCGAGGCCGAAACCGGCCCCTGCCACAAACTGTTTGCCCACCGCGACGACCCCTGCGAACACTGCCCGGCCGAAAGCTCCTTCCACGACGGCGCGCCCCACGAAGGCGAAACTGTCGTGTCCACCCGCTGCGGCGCGGCCAAAAACATGTGGCTTCGCACCGCCCCCATCCCCGACGCCACAGGCGAAACCAGCCAGGTCATCGAAATCGCCGCCGACATCACCCCCATCCGGGCCCTGCAAGACCACCTCGCATCGCTTGGGCTCATGCTCGGCTCCATGTCCCACGGCGTCAAAGGCCTGCTCACCTCCCTCGACGGCGGCATGTTCAAGGTCGAAACCGGACTGTCCCGCGAGGACTGGACCCGCGTGCGCGACGGTTGGGGCGTGGTGTCCGACAAGATCGGACGCATCCGCAACATGGTGCTCGACATCCTGTGGTACGCCAAATCGCGCGAACCCGAGCTCTCCCCCGTCTCCATCGAAACCTTCGCCCGCGATCTGGCCGGCATCGTCGAACCCAAGGCCCAAAGCCGCGACGTGGCCTTCATCCTGCGCCTGGGCGAGGCCGCAGGCACGCTGCCCATGGACGAGACGGCGCTCACCTCGGCCATGGTCAACCTGCTCGAAAACGCCGTGGATGCCTGCGCCGAGGACAAGGCCAAGGCCTTCCACGAAGTGACCCTGACCGTGGAAGCCACGGCCGAGGCCGTGACCTTCGTGGTCGCCGACAACGGCGTCGGCATGGACCAGTCCACCCGGGAACGCATGTTTACGCTCTTTTTCTCCTCCAAAGGCTCGCGCGGCACCGGACTGGGGCTTTTCATCGCCAACCAGATCGTGGCCCAGCACGGAGGCTCCATCGCCGTGACCTCCGAACCCGGCGTCGGCAGCGCCATCGCCGTGCGCCTGCCGCGCGGCGCTAGCGTTTGCAGTTAG</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">omxware</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">OMXware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-omxware-and-initialize-session">Import <code class="docutils literal notranslate"><span class="pre">omxware</span></code> and initialize session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieve-genes-as-a-pandas-dataframe">Retrieve genes as a Pandas Dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distribution-of-genes-by-genera">Distribution of Genes by Genera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-gene-object-as-json">Retrieve a Gene object as JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieve-gene-data-as-an-object">Retrieve Gene data as an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-gene-in-fasta-format">Retrieve a Gene in FASTA format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">omxware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="modules.html" title="next chapter">omxware</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, OMXWare Dev.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

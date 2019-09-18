@@ -1,0 +1,423 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>omxware.OmxResponse &#8212; omxware 0.1.27 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for omxware.OmxResponse</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">requests</span> <span class="k">import</span> <span class="n">Response</span>
+
+<span class="kn">from</span> <span class="nn">omxware.entities.Domain</span> <span class="k">import</span> <span class="n">Domain</span>
+<span class="kn">from</span> <span class="nn">omxware.entities.Gene</span> <span class="k">import</span> <span class="n">Gene</span>
+<span class="kn">from</span> <span class="nn">omxware.entities.Genome</span> <span class="k">import</span> <span class="n">Genome</span>
+<span class="kn">from</span> <span class="nn">omxware.entities.Genus</span> <span class="k">import</span> <span class="n">Genus</span>
+<span class="kn">from</span> <span class="nn">omxware.entities.GoTerm</span> <span class="k">import</span> <span class="n">Go</span>
+<span class="kn">from</span> <span class="nn">omxware.entities.IprCode</span> <span class="k">import</span> <span class="n">Ipr</span>
+<span class="kn">from</span> <span class="nn">omxware.entities.Protein</span> <span class="k">import</span> <span class="n">Protein</span>
+<span class="kn">from</span> <span class="nn">omxware.entities.User</span> <span class="k">import</span> <span class="n">User</span>
+
+
+<div class="viewcode-block" id="OmxResponse"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse">[docs]</a><span class="k">class</span> <span class="nc">OmxResponse</span><span class="p">:</span>
+    <span class="n">__connect_hdr</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__results</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># []</span>
+    <span class="n">__results_json</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># []</span>
+    <span class="n">__facets</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># {}</span>
+    <span class="n">__page_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">__page_number</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">__total_results</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">__message</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__response_time</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">__http_response_code</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">__error</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">__results_type</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connecthdr</span><span class="p">,</span> <span class="n">omx_response</span><span class="p">:</span> <span class="n">Response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span> <span class="o">=</span> <span class="n">connecthdr</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">omx_response</span><span class="p">,</span> <span class="n">Response</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">omx_response</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">js0n</span> <span class="o">=</span> <span class="n">omx_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">__http_response_code</span> <span class="o">=</span> <span class="n">omx_response</span><span class="o">.</span><span class="n">status_code</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__page_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">js0n</span><span class="p">[</span><span class="s1">&#39;page_size&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__page_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">js0n</span><span class="p">[</span><span class="s1">&#39;page_index&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__total_results</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">js0n</span><span class="p">[</span><span class="s1">&#39;total_results&#39;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__response_time</span> <span class="o">=</span> <span class="n">js0n</span><span class="p">[</span><span class="s1">&#39;time_taken&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__message</span> <span class="o">=</span> <span class="n">js0n</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;results&#39;</span> <span class="ow">in</span> <span class="n">js0n</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__total_results</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">js0n</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__process_results</span><span class="p">(</span><span class="n">js0n</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__results_json</span> <span class="o">=</span> <span class="n">js0n</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__results</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;facets&#39;</span> <span class="ow">in</span> <span class="n">js0n</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">js0n</span><span class="p">[</span><span class="s2">&quot;facets&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__process_facets</span><span class="p">(</span><span class="n">js0n</span><span class="p">[</span><span class="s2">&quot;facets&quot;</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__facets</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="OmxResponse.type"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.type">[docs]</a>    <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get Response type</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :returns:   str:    Response type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__results_type</span></div>
+
+<div class="viewcode-block" id="OmxResponse.page_size"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.page_size">[docs]</a>    <span class="k">def</span> <span class="nf">page_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get Response page size</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :returns:   str:    Response page size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__page_size</span></div>
+
+<div class="viewcode-block" id="OmxResponse.page_index"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.page_index">[docs]</a>    <span class="k">def</span> <span class="nf">page_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get Response page number</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :returns:   str:    Response page number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__page_number</span></div>
+
+<div class="viewcode-block" id="OmxResponse.total_results"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.total_results">[docs]</a>    <span class="k">def</span> <span class="nf">total_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get total number of results for the query</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :returns:   int:    Total number of results</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_results</span></div>
+
+<div class="viewcode-block" id="OmxResponse.response_time"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.response_time">[docs]</a>    <span class="k">def</span> <span class="nf">response_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get Response time for the query</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :returns:   str:    Response time</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__response_time</span></div>
+
+<div class="viewcode-block" id="OmxResponse.message"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.message">[docs]</a>    <span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        OMXWare response comment</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :returns:   str:    Message</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__message</span></div>
+
+<div class="viewcode-block" id="OmxResponse.error"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        OMXWare Query errors / exceptions</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :returns:   str:    Error messages</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__error</span></div>
+
+<div class="viewcode-block" id="OmxResponse.results"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.results">[docs]</a>    <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;list&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Get the results for in the chosen output format</span>
+
+<span class="sd">            Parameters:</span>
+<span class="sd">                type (str): one of {&#39;list&#39;, &#39;json&#39;, &#39;df&#39;, &#39;fasta&#39;}</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                &#39;list&#39;      =&gt; OMXWare query results as list</span>
+<span class="sd">                &#39;json&#39;      =&gt; List of OMXWare query results as a json array</span>
+<span class="sd">                &#39;df&#39;        =&gt; List of OMXWare query results as a Pandas data-frame</span>
+<span class="sd">                &#39;fasta&#39;     =&gt; (Only for Genes and/or Proteins) Get results as Fasta</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;list&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__results</span>
+
+        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;df&#39;</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__2json</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__results</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">df</span>
+
+        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;json&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__2json</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__results</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;fasta&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__2fasta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__results</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OmxResponse.facets"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.facets">[docs]</a>    <span class="k">def</span> <span class="nf">facets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__facets</span></div>
+
+    <span class="k">def</span> <span class="nf">__process_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+        <span class="n">results_tmp</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+
+                <span class="n">typ</span> <span class="o">=</span> <span class="kc">None</span>
+
+                <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                    <span class="n">typ</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__results_type</span> <span class="o">=</span> <span class="n">typ</span>
+
+                <span class="k">if</span> <span class="n">typ</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;genus&#39;</span><span class="p">:</span>
+                        <span class="n">genus_obj</span> <span class="o">=</span> <span class="n">Genus</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">genus_obj</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;genome&#39;</span><span class="p">:</span>
+                        <span class="n">genome_obj</span> <span class="o">=</span> <span class="n">Genome</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">genome_obj</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;gene&#39;</span><span class="p">:</span>
+                        <span class="n">gene_obj</span> <span class="o">=</span> <span class="n">Gene</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gene_obj</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;protein&#39;</span><span class="p">:</span>
+                        <span class="n">protein_obj</span> <span class="o">=</span> <span class="n">Protein</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">protein_obj</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;domain&#39;</span><span class="p">:</span>
+                        <span class="n">domain_obj</span> <span class="o">=</span> <span class="n">Domain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">domain_obj</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;go&#39;</span><span class="p">:</span>
+                        <span class="n">go_obj</span> <span class="o">=</span> <span class="n">Go</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">go_obj</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;ipr&#39;</span><span class="p">:</span>
+                        <span class="n">ipr_obj</span> <span class="o">=</span> <span class="n">Ipr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ipr_obj</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span>
+                        <span class="n">user_obj</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connect_hdr</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_obj</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="n">results_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">__results_type</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">__results</span> <span class="o">=</span> <span class="n">results_tmp</span>
+
+    <span class="k">def</span> <span class="nf">__process_facets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">facets</span><span class="p">):</span>
+        <span class="n">facets_tmp</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">facets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">facets</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">facet_key</span> <span class="ow">in</span> <span class="n">facets</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">facet</span> <span class="o">=</span> <span class="n">facets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">facet_key</span><span class="p">)</span>
+                <span class="n">tmp_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="k">for</span> <span class="n">facet_by_key</span> <span class="ow">in</span> <span class="n">facet</span><span class="p">:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">facet_by_key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+                    <span class="n">count</span> <span class="o">=</span> <span class="n">facet_by_key</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+
+                    <span class="n">tmp_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="n">count</span><span class="p">})</span>
+
+                <span class="n">facets_tmp</span><span class="p">[</span><span class="n">facet_key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tmp_list</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__facets</span> <span class="o">=</span> <span class="n">facets_tmp</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__2json</span><span class="p">(</span><span class="n">res_list</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">res_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;sequence&#39;</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">__2fasta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res_list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="s1">&#39;protein&#39;</span><span class="p">]:</span>
+            <span class="n">fasta</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">res_list</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">_2fasta</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fasta</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">fasta</span> <span class="o">=</span> <span class="n">fasta</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+                <span class="n">fasta</span> <span class="o">=</span> <span class="n">fasta</span> <span class="o">+</span> <span class="n">res</span>
+
+            <span class="k">return</span> <span class="n">fasta</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&#39;Fasta&#39; output format only for Genes / Proteins&quot;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">res_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__results_json</span><span class="p">)</span>
+        <span class="n">fac_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__facets</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">75</span><span class="p">:</span>
+            <span class="n">res_str</span> <span class="o">=</span> <span class="n">res_str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">75</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;... &quot;</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fac_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">75</span><span class="p">:</span>
+            <span class="n">fac_str</span> <span class="o">=</span> <span class="n">fac_str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">75</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;... &quot;</span>
+
+        <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---------------------------------------------------------------------------------------------------&quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Page: </span><span class="se">\t\t\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__page_number</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Page Size: </span><span class="se">\t\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__page_size</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total Results: </span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__total_results</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Results: </span><span class="se">\t\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">res_str</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Facets: </span><span class="se">\t\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">fac_str</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Message: </span><span class="se">\t\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__message</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---------------------------------------------------------------------------------------------------&quot;</span> <span class="o">+</span> \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> use .results() to get the results &quot;</span> <span class="o">+</span>   \
+                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---------------------------------------------------------------------------------------------------&quot;</span>
+
+        <span class="k">return</span> <span class="n">string</span>
+
+<div class="viewcode-block" id="OmxResponse.show_facets"><a class="viewcode-back" href="../../omxware.html#omxware.OmxResponse.OmxResponse.show_facets">[docs]</a>    <span class="k">def</span> <span class="nf">show_facets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="n">topN</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">facets</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">facets</span><span class="p">():</span>
+
+            <span class="n">rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">topN</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">explode</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">topN</span>
+            <span class="n">explode</span><span class="p">[</span><span class="n">rand</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.15</span>
+
+            <span class="n">distribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">facets</span><span class="p">()[</span><span class="n">name</span><span class="p">]</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">distribution</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))[:</span><span class="n">topN</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span>
+                <span class="c1"># using data total)arrests</span>
+                <span class="n">df</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">],</span>
+                <span class="c1"># with the labels being officer names</span>
+                <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                <span class="c1"># with no shadows</span>
+                <span class="n">shadow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="c1"># with colors</span>
+                <span class="c1"># colors=colors,</span>
+                <span class="c1"># with one slide exploded out</span>
+                <span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span>
+                <span class="c1"># with the start angle at 90%</span>
+                <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+                <span class="c1"># with the percent listed as a fraction</span>
+                <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># View the plot drop above</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span>
+
+            <span class="c1"># View the plot</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">omxware</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">OMXware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">omxware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release.html">Release Notes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, OMXWare Dev.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
