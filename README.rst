@@ -10,21 +10,15 @@ OMXware
 
 ---------------
 
-**SDK Documentation**
+**SDK Documentation:**
 
-`https://ibm.github.io/omxware-pypi-docs/ <https://ibm.github.io/omxware-pypi-docs/>`_
+`http://ibm.biz/omxware-sdk-docs <https://ibm.github.io/omxware-pypi-docs/>`_
 
 ---------------
 
 **Web Services**
 
 `http://ibm.biz/omxware-api <https://api.s2s-omxware.us-south.containers.appdomain.cloud/>`_
-
----------------
-
-**SDK Documentation:**
-
-`http://ibm.biz/omxware-sdk-docs <https://ibm.github.io/omxware-pypi-docs/>`_
 
 ---------------
 
