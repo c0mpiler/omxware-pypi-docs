@@ -10,7 +10,6 @@ OMXWare SDK docs!
    usage
    modules
    contributing
-   authors
    release
 
 Indices and tables
