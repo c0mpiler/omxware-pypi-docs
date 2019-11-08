@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>omxware package &#8212; omxware 0.1.28 documentation</title>
+    <title>omxware package &#8212; omxware 0.1.29 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -87,7 +87,20 @@
 <dl class="method">
 <dt id="omxware.OmxResponse.OmxResponse.facets">
 <code class="descname">facets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.facets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.facets" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get the pre-defined groups/facets for the results requested.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">JSON array with the group names and counts.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="omxware.OmxResponse.OmxResponse.message">
@@ -179,7 +192,16 @@
 <dl class="method">
 <dt id="omxware.OmxResponse.OmxResponse.show_facets">
 <code class="descname">show_facets</code><span class="sig-paren">(</span><em>name='type'</em>, <em>topN=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/omxware/OmxResponse.html#OmxResponse.show_facets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#omxware.OmxResponse.OmxResponse.show_facets" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Display the groups / facets from the results. Only to be used in an environments that can display a pandas visualization.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><p class="first">name (str): group name. (e.g: when searching for genes/proteins group name could be ‘genus_name’)</p>
+<p class="last">topN (int): top ‘N’ groups</p>
+</dd>
+<dt>Returns:</dt>
+<dd>Pandas pie chart (visualization)</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="omxware.OmxResponse.OmxResponse.total_results">
